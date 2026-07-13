@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Default Risk — Model Comparison — Ariel Matan</title>
+  <meta name="description" content="Seven supervised machine-learning models compared head-to-head for loan-level credit default prediction, translated into approval-rate vs. default-rate credit policy insights.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#0f1e33',
+              light: '#16294a',
+              accent: '#2f6fed'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body class="bg-white text-slate-700 font-sans antialiased">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-navy/95 backdrop-blur border-b border-white/10">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-5 h-16" aria-label="Main navigation">
+      <a href="../index.html" class="text-white font-bold tracking-tight text-lg">Ariel<span class="text-navy-accent">.</span>Matan</a>
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to all projects
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-navy text-white pt-32 pb-20 relative overflow-hidden">
+    <div class="hero-grid-bg absolute inset-0" aria-hidden="true"></div>
+    <div class="max-w-4xl mx-auto px-5 relative">
+      <p class="text-navy-accent font-semibold tracking-widest uppercase text-xs mb-4 reveal">Machine Learning · R</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5 leading-tight reveal">
+        Credit Default Risk — Model Comparison
+      </h1>
+      <p class="max-w-2xl text-slate-400 text-lg leading-relaxed mb-8 reveal">
+        Seven supervised machine-learning models compared head-to-head for predicting loan-level default risk —
+        and translated into business-oriented credit policy insights: who to approve, at what threshold, at what cost.
+      </p>
+      <ul class="flex flex-wrap gap-2 mb-8 reveal">
+        <li class="tech-tag !bg-white/10 !text-slate-200">R</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">XGBoost</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">Random Forest</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">caret</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">Credit Risk</li>
+      </ul>
+      <div class="flex flex-wrap gap-4 reveal">
+        <a href="https://github.com/Ariel242/Credit-Default-Risk-Prediction-Model-Comparison" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-navy-accent font-semibold text-white hover:bg-blue-600 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.04 11.04 0 015.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.66.41.36.78 1.06.78 2.14v3.17c0 .3.21.67.8.55A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+          </svg>
+          View code on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AT A GLANCE ===================== -->
+  <section class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">7</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Models compared</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">0.956</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Best AUC-ROC (XGBoost)</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">83.2%</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Of defaults caught</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">79.6%</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Precision on flagged loans</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">The Business Problem</h2>
+      <div class="space-y-5 text-lg leading-relaxed reveal">
+        <p>
+          A lender must decide whether to <strong class="text-slate-900">approve, decline, or price a loan</strong>
+          based on borrower and loan characteristics at origination. Three questions drive this project:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-base">
+          <li>How accurately can we estimate the probability that a borrower will default?</li>
+          <li>Which borrower and loan characteristics are the main drivers of default risk?</li>
+          <li>How does moving the approval threshold change the trade-off between
+              <strong class="text-slate-900">approval rate and default rate</strong> in the portfolio?</li>
+        </ul>
+        <p>
+          The models are trained on the Kaggle <em>Credit Risk Dataset</em> — applicant profile, loan
+          characteristics and credit-bureau features — with a stratified train / validation / test split
+          that preserves the class imbalance of real lending books.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== APPROACH ===================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="section-title reveal">Approach</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Same Data, Same Splits</h3>
+          <p class="text-sm leading-relaxed">
+            All models are trained on identical data splits, tuned by cross-validation on the validation set,
+            and compared <strong>only on the held-out test set</strong> — ensuring a fair, apples-to-apples
+            comparison.
+          </p>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Seven Model Families</h3>
+          <p class="text-sm leading-relaxed">
+            From simple to complex: baseline &amp; cross-validated <strong>Logistic Regression</strong>,
+            regularized <strong>GLMnet</strong> (LASSO/Ridge), <strong>Decision Tree</strong>,
+            <strong>Random Forest</strong>, <strong>XGBoost</strong> and a shallow
+            <strong>Neural Network</strong> — implemented in R with <code>caret</code>.
+          </p>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Statistical + Business Thresholds</h3>
+          <p class="text-sm leading-relaxed">
+            Metrics include ROC-AUC, PR-AUC, sensitivity, specificity and precision. Operating thresholds are
+            chosen both statistically (<strong>Youden's J</strong>) and by business criteria — the
+            approval-rate vs. default-rate trade-off.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESULTS ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-5">
+      <h2 class="section-title reveal">Results</h2>
+      <p class="text-lg leading-relaxed mb-10 reveal">
+        <strong class="text-slate-900">XGBoost wins across the board</strong> — the highest discrimination
+        (AUC-ROC 0.956, PR-AUC 0.913) while catching 83.2% of defaults at 79.6% precision. Tree ensembles
+        clearly outperform linear models on this data, with a gap of about 7 AUC points over the logistic
+        baselines.
+      </p>
+
+      <figure class="mb-12 reveal">
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm overflow-hidden">
+          <img src="credit-default-roc-curves.png" alt="ROC curves of all seven models on the test set — XGBoost closest to the top-left corner"
+               class="w-full h-auto rounded-lg" loading="lazy">
+        </div>
+        <figcaption class="text-sm text-slate-500 mt-3 text-center">
+          ROC curves for all models on the held-out test set. The closer to the top-left corner, the better the
+          separation between defaulters and non-defaulters.
+        </figcaption>
+      </figure>
+
+      <figure class="mb-12 reveal">
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm overflow-hidden">
+          <img src="credit-default-auc-comparison.png" alt="Bar chart comparing test-set AUC-ROC of all models — XGBoost 0.956 at the top, logistic baselines 0.883 at the bottom"
+               class="w-full h-auto rounded-lg" loading="lazy">
+        </div>
+        <figcaption class="text-sm text-slate-500 mt-3 text-center">
+          Test-set AUC-ROC by model. Tree ensembles (XGBoost, Random Forest) lead; the three logistic variants
+          cluster at 0.883.
+        </figcaption>
+      </figure>
+
+      <figure class="mb-12 reveal">
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm overflow-hidden">
+          <img src="credit-default-tradeoff.png" alt="Scatter plot of sensitivity versus precision per model — XGBoost achieves the highest recall at competitive precision"
+               class="w-full h-auto rounded-lg" loading="lazy">
+        </div>
+        <figcaption class="text-sm text-slate-500 mt-3 text-center">
+          Sensitivity–precision trade-off at each model's chosen operating threshold (point size = AUC-ROC).
+          XGBoost catches the most defaults; the logistic models pay a steep precision penalty.
+        </figcaption>
+      </figure>
+
+      <div class="overflow-x-auto reveal">
+        <table class="w-full text-sm text-left border-collapse min-w-[560px]">
+          <thead>
+            <tr class="bg-navy text-white">
+              <th class="px-4 py-3 font-semibold rounded-tl-lg">Model</th>
+              <th class="px-4 py-3 font-semibold">AUC-ROC</th>
+              <th class="px-4 py-3 font-semibold">PR-AUC</th>
+              <th class="px-4 py-3 font-semibold">Sensitivity</th>
+              <th class="px-4 py-3 font-semibold">Precision</th>
+              <th class="px-4 py-3 font-semibold rounded-tr-lg">F1</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="bg-blue-50/60 hover:bg-blue-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">XGBoost 🏆</td>
+              <td class="px-4 py-3 font-semibold text-slate-900">0.956</td>
+              <td class="px-4 py-3">0.913</td>
+              <td class="px-4 py-3">0.832</td>
+              <td class="px-4 py-3">0.796</td>
+              <td class="px-4 py-3">0.813</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Random Forest</td>
+              <td class="px-4 py-3">0.943</td>
+              <td class="px-4 py-3">0.901</td>
+              <td class="px-4 py-3">0.787</td>
+              <td class="px-4 py-3">0.862</td>
+              <td class="px-4 py-3">0.823</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Decision Tree</td>
+              <td class="px-4 py-3">0.925</td>
+              <td class="px-4 py-3">0.875</td>
+              <td class="px-4 py-3">0.746</td>
+              <td class="px-4 py-3">0.879</td>
+              <td class="px-4 py-3">0.807</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Neural Network</td>
+              <td class="px-4 py-3">0.914</td>
+              <td class="px-4 py-3">0.852</td>
+              <td class="px-4 py-3">0.725</td>
+              <td class="px-4 py-3">0.861</td>
+              <td class="px-4 py-3">0.787</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Logistic (baseline / CV)</td>
+              <td class="px-4 py-3">0.883</td>
+              <td class="px-4 py-3">0.728</td>
+              <td class="px-4 py-3">0.776</td>
+              <td class="px-4 py-3">0.607</td>
+              <td class="px-4 py-3">0.681</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">GLMnet (LASSO/Ridge)</td>
+              <td class="px-4 py-3">0.883</td>
+              <td class="px-4 py-3">0.725</td>
+              <td class="px-4 py-3">0.781</td>
+              <td class="px-4 py-3">0.591</td>
+              <td class="px-4 py-3">0.673</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-sm text-slate-500 mt-3 reveal">All metrics computed on the held-out test set, at each model's selected operating threshold.</p>
+    </div>
+  </section>
+
+  <!-- ===================== BUSINESS IMPLICATIONS ===================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">From Model to Credit Policy</h2>
+      <p class="text-lg leading-relaxed mb-10 reveal">
+        A model is only useful once its probability-of-default (PD) scores are mapped to decisions. Using the
+        recommended model, different cut-offs simulate different risk appetites:
+      </p>
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Conservative</h3>
+          <p class="text-sm leading-relaxed">
+            Higher cut-off → lower approval rate, cleaner book. For when the lender prioritizes
+            <strong>portfolio quality</strong> and capital protection.
+          </p>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Balanced</h3>
+          <p class="text-sm leading-relaxed">
+            Medium cut-off → a standard trade-off between approval volume and default risk. The
+            <strong>default operating point</strong> for routine credit policy.
+          </p>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Growth</h3>
+          <p class="text-sm leading-relaxed">
+            Lower cut-off → more approvals, more risk. Appropriate in growth phases, when
+            <strong>pricing and collateral</strong> absorb part of the extra expected loss.
+          </p>
+        </article>
+      </div>
+      <ul class="space-y-4 text-lg leading-relaxed reveal">
+        <li><strong class="text-slate-900">Underwriting:</strong> predicted PD as an input to approve/decline decisions, alongside business rules.</li>
+        <li><strong class="text-slate-900">Risk-based pricing:</strong> mapping PD bands to interest rates and fees, aligning price with expected loss.</li>
+        <li><strong class="text-slate-900">Portfolio monitoring:</strong> tracking the PD distribution over time to flag deterioration in new-book quality.</li>
+        <li><strong class="text-slate-900">Policy simulation:</strong> quantifying the impact of a threshold change on approval volume and expected defaults before rolling it out.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 reveal">
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">Explore the full analysis</h3>
+          <p class="text-sm text-slate-500">Complete R pipeline — data prep, model training, evaluation and plots — on GitHub.</p>
+        </div>
+        <a href="https://github.com/Ariel242/Credit-Default-Risk-Prediction-Model-Comparison" target="_blank" rel="noopener"
+           class="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-navy-accent font-semibold text-white hover:bg-blue-600 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11.04 11.04 0 015.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.66.41.36.78 1.06.78 2.14v3.17c0 .3.21.67.8.55A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-navy text-slate-400">
+    <div class="max-w-6xl mx-auto px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p>© <span id="year"></span> Ariel Matan</p>
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 font-semibold text-slate-300 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to all projects
+      </a>
+    </div>
+  </footer>
+
+  <script src="project-page.js"></script>
+</body>
+</html>
