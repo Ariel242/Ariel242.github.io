@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Regulation of Digital Payment Service Providers — Ariel Matan</title>
+  <meta name="description" content="A comparative review of the regulatory frameworks governing digital Payment Service Providers (PSPs) across the US, EU, UK, Israel, Canada, Australia and Singapore.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#0f1e33',
+              light: '#16294a',
+              accent: '#2f6fed'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body class="bg-white text-slate-700 font-sans antialiased">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-navy/95 backdrop-blur border-b border-white/10">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-5 h-16" aria-label="Main navigation">
+      <a href="../index.html" class="text-white font-bold tracking-tight text-lg">Ariel<span class="text-navy-accent">.</span>Matan</a>
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to all projects
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-navy text-white pt-32 pb-20 relative overflow-hidden">
+    <div class="hero-grid-bg absolute inset-0" aria-hidden="true"></div>
+    <div class="max-w-4xl mx-auto px-5 relative">
+      <p class="text-navy-accent font-semibold tracking-widest uppercase text-xs mb-4 reveal">Practicum · Regulatory Review</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5 leading-tight reveal">
+        International Regulation of Digital Payment Service Providers
+      </h1>
+      <p class="max-w-2xl text-slate-400 text-lg leading-relaxed mb-8 reveal">
+        A comparative review of the regulatory frameworks governing Payment Service Providers (PSPs)
+        across seven advanced markets — the US, EU, UK, Israel, Canada, Australia and Singapore.
+      </p>
+      <ul class="flex flex-wrap gap-2 mb-8 reveal">
+        <li class="tech-tag !bg-white/10 !text-slate-200">PSD2</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">Open Banking</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">AML / KYC</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">E-Money</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">Comparative Regulation</li>
+      </ul>
+      <div class="flex flex-wrap gap-4 reveal">
+        <a href="psp-regulation-paper.pdf" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-navy-accent font-semibold text-white hover:bg-blue-600 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Read the full paper (PDF, Hebrew)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AT A GLANCE ===================== -->
+  <section class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-5">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">7</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Markets reviewed</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">3</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Provider layers</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">3</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Evaluation criteria</p>
+        </div>
+        <div class="reveal">
+          <p class="text-4xl font-extrabold text-navy">30+</p>
+          <p class="text-sm font-semibold text-slate-500 mt-1">Primary sources</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">Overview</h2>
+      <div class="space-y-5 text-lg leading-relaxed reveal">
+        <p>
+          The payments world is undergoing an accelerated digital transformation. The center of gravity is
+          shifting from traditional banks operating batch clearing systems to non-bank technology players
+          processing billions of real-time transactions. Driven by the spread of digital wallets and open
+          banking reforms, this shift created a dangerous <strong class="text-slate-900">regulatory vacuum</strong>:
+          entities managing customer funds and collecting sensitive financial data were operating without a
+          banking license and outside supervisory frameworks.
+        </p>
+        <p>
+          This review maps the regulatory frameworks that emerged around digital
+          <strong class="text-slate-900">Payment Service Providers (PSPs)</strong> in seven markets, and evaluates
+          each model against three criteria: <strong class="text-slate-900">financial stability</strong>,
+          <strong class="text-slate-900">competition</strong>, and
+          <strong class="text-slate-900">consumer protection &amp; privacy</strong>.
+        </p>
+        <p>
+          The central conclusion: modern regulation is no longer just about enforcement and risk prevention —
+          it has become a <strong class="text-slate-900">strategic tool that shapes market boundaries</strong> and
+          creates new business models built on open data, algorithmic fairness and personalized services.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THREE PROVIDER LAYERS ===================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="section-title reveal">Three Layers of Payment Providers</h2>
+      <p class="max-w-3xl text-lg leading-relaxed mb-12 reveal">
+        The analysis distinguishes between three layers of activity in the payments ecosystem —
+        each attracting a different regulatory focus.
+      </p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="project-card reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="card-icon bg-blue-50 text-navy-accent">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+              </svg>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Layer 1</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Payment Gateways &amp; Infrastructure</h3>
+          <p class="text-sm leading-relaxed mb-4">
+            Provide the secure technological pipeline between merchants and acquirers via flexible APIs.
+            They do not hold customer funds, so supervision focuses on
+            <strong>operational and cyber security</strong> rather than prudential stability.
+          </p>
+          <p class="text-xs text-slate-500 mt-auto">e.g. Stripe, Adyen, Tranzila</p>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="card-icon bg-blue-50 text-navy-accent">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Layer 2</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">E-Money Issuers &amp; Wallets</h3>
+          <p class="text-sm leading-relaxed mb-4">
+            Convert fiat money into digital value held in virtual accounts. Because they hold customer
+            funds without deposit insurance, they face <strong>capital requirements and strict
+            safeguarding / segregation of client funds</strong>.
+          </p>
+          <p class="text-xs text-slate-500 mt-auto">e.g. PayPal, Revolut, Bit, PayBox</p>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="card-icon bg-blue-50 text-navy-accent">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+              </svg>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Layer 3</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Payment Initiation &amp; Account Information</h3>
+          <p class="text-sm leading-relaxed mb-4">
+            Born out of open banking: initiate account-to-account transfers and aggregate financial data
+            across banks. Supervision centers on <strong>privacy, informed consent and data
+            protection</strong>.
+          </p>
+          <p class="text-xs text-slate-500 mt-auto">e.g. Plaid, TrueLayer, RiseUp</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GLOBAL STANDARD SETTERS ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">The Global Rule-Setters</h2>
+      <p class="text-lg leading-relaxed mb-10 reveal">
+        Payments cross borders effortlessly, while laws stop at them. To prevent regulatory arbitrage,
+        international bodies set standards that national regulators then adopt into local law:
+      </p>
+      <ul class="space-y-6">
+        <li class="flex gap-4 reveal">
+          <span class="card-icon bg-blue-50 text-navy-accent shrink-0 font-bold text-xs">FATF</span>
+          <p><strong class="text-slate-900">Financial Action Task Force</strong> — 40 recommendations against money
+          laundering and terror financing, including the "Travel Rule" requiring sender/recipient details to
+          accompany every digital transaction. Compliance is a de-facto condition for participating in global trade.</p>
+        </li>
+        <li class="flex gap-4 reveal">
+          <span class="card-icon bg-blue-50 text-navy-accent shrink-0 font-bold text-xs">BIS</span>
+          <p><strong class="text-slate-900">Bank for International Settlements &amp; CPMI</strong> — principles for
+          financial market infrastructures, ensuring clearing and settlement systems withstand economic shocks
+          and liquidity failures.</p>
+        </li>
+        <li class="flex gap-4 reveal">
+          <span class="card-icon bg-blue-50 text-navy-accent shrink-0 font-bold text-xs">FSB</span>
+          <p><strong class="text-slate-900">Financial Stability Board (G20)</strong> — a strategic roadmap to make
+          cross-border payments faster, cheaper and more transparent across jurisdictions.</p>
+        </li>
+        <li class="flex gap-4 reveal">
+          <span class="card-icon bg-blue-50 text-navy-accent shrink-0 font-bold text-xs">ISO</span>
+          <p><strong class="text-slate-900">Technical standards</strong> — ISO&nbsp;20022 as the common language of
+          payment systems worldwide, and PCI-DSS as the baseline security standard for anyone handling card data.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== MARKET BY MARKET ===================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="section-title reveal">Seven Markets, Seven Approaches</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">European Union</h3>
+          <p class="text-navy-accent font-semibold text-xs uppercase tracking-widest mb-3">Centralized · Consumer-first · EBA / ECB</p>
+          <p class="text-sm leading-relaxed">
+            The global pace-setter. PSD2 broke the banks' monopoly on customer data and launched open banking,
+            paired with Strong Customer Authentication (SCA) and GDPR privacy constraints. MiCA and the EU AI Act
+            extend the perimeter to crypto-assets and algorithmic fairness. The main challenge: uneven enforcement
+            across 27 member states invites regulatory arbitrage.
+          </p>
+        </article>
+
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">United States</h3>
+          <p class="text-navy-accent font-semibold text-xs uppercase tracking-widest mb-3">Decentralized · Enforcement-based · FinCEN / CFPB</p>
+          <p class="text-sm leading-relaxed">
+            No single federal payments law. Federal supervision targets financial crime (money-transmitter
+            registration, AML) and consumer protection, while licensing happens state-by-state — a company serving
+            all of the US needs up to 50 separate licenses. Highly innovative, but with the heaviest bureaucratic
+            entry barriers of any market reviewed.
+          </p>
+        </article>
+
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">United Kingdom</h3>
+          <p class="text-navy-accent font-semibold text-xs uppercase tracking-widest mb-3">Risk-based · Innovation-friendly · FCA</p>
+          <p class="text-sm leading-relaxed">
+            Pioneer of the regulatory sandbox and mandated open banking (the CMA forced the nine largest banks to
+            open their data). Combines aggressive pro-innovation tools with draconian safeguarding of client
+            funds — including personal liability for senior managers. Post-Brexit divergence from the EU adds a
+            dual-compliance burden.
+          </p>
+        </article>
+
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">Israel</h3>
+          <p class="text-navy-accent font-semibold text-xs uppercase tracking-widest mb-3">Reform-driven · Pro-competition · BoI / ISA</p>
+          <p class="text-sm leading-relaxed">
+            In the middle of a deep structural reform adopting EU standards: the Payment Services Law (2019),
+            the Financial Information Services Law (2021, "open banking") and the 2023 licensing law that moved
+            supervision of payment companies to the Israel Securities Authority. The Bank of Israel opened
+            direct access to national payment rails (Shva, Masav) for non-bank players.
+          </p>
+        </article>
+
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">Singapore</h3>
+          <p class="text-navy-accent font-semibold text-xs uppercase tracking-widest mb-3">Risk-based · Tech-neutral · MAS</p>
+          <p class="text-sm leading-relaxed">
+            A single regulator (MAS) and a single Payment Services Act — technology-neutral, with license tiers
+            scaled to activity volume, covering wallets, remittances and crypto under one roof. Sandboxes and open
+            national infrastructure made it Asia's fintech hub, backed by some of the world's strictest AML and
+            cyber requirements.
+          </p>
+        </article>
+
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">Australia &amp; Canada</h3>
+          <p class="text-navy-accent font-semibold text-xs uppercase tracking-widest mb-3">Modernizing · Data-rights focused · RBA / ASIC / BoC</p>
+          <p class="text-sm leading-relaxed">
+            Both fight concentrated banking oligopolies. Australia's Consumer Data Right extends open banking
+            into a full open-data economy, giving consumers ownership of their financial data. Canada's Retail
+            Payment Activities framework put fintechs under Bank of Canada supervision with mandatory
+            segregation of client funds, though its open-banking rollout is slower.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMPARATIVE TABLE ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="section-title reveal">Comparative Snapshot</h2>
+      <div class="overflow-x-auto reveal">
+        <table class="w-full text-sm text-left border-collapse min-w-[640px]">
+          <thead>
+            <tr class="bg-navy text-white">
+              <th class="px-4 py-3 font-semibold rounded-tl-lg">Market</th>
+              <th class="px-4 py-3 font-semibold">Approach</th>
+              <th class="px-4 py-3 font-semibold">Key regulators</th>
+              <th class="px-4 py-3 font-semibold">Signature tools</th>
+              <th class="px-4 py-3 font-semibold rounded-tr-lg">Complexity</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">EU</td>
+              <td class="px-4 py-3">Harmonized, consumer protection</td>
+              <td class="px-4 py-3">EBA, ECB</td>
+              <td class="px-4 py-3">Binding directives (PSD2), SCA, GDPR, MiCA</td>
+              <td class="px-4 py-3">High</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">USA</td>
+              <td class="px-4 py-3">Decentralized, enforcement-based</td>
+              <td class="px-4 py-3">FinCEN, CFPB, states</td>
+              <td class="px-4 py-3">State licensing, strong AML monitoring</td>
+              <td class="px-4 py-3">Very high</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">UK</td>
+              <td class="px-4 py-3">Flexible, risk-focused, pro-innovation</td>
+              <td class="px-4 py-3">FCA</td>
+              <td class="px-4 py-3">Open banking, regulatory sandbox, full fund segregation</td>
+              <td class="px-4 py-3">High</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Israel</td>
+              <td class="px-4 py-3">Pro-competition, reform-based</td>
+              <td class="px-4 py-3">Bank of Israel, ISA</td>
+              <td class="px-4 py-3">Open banking, Directive 411 (AML), ISA licensing</td>
+              <td class="px-4 py-3">Medium</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Australia</td>
+              <td class="px-4 py-3">Proactive, data-focused</td>
+              <td class="px-4 py-3">RBA, ASIC</td>
+              <td class="px-4 py-3">Consumer Data Right (CDR)</td>
+              <td class="px-4 py-3">Medium–high</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Canada</td>
+              <td class="px-4 py-3">Modernizing, risk-based</td>
+              <td class="px-4 py-3">Bank of Canada</td>
+              <td class="px-4 py-3">Fintech licensing, fund segregation</td>
+              <td class="px-4 py-3">Medium</td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="px-4 py-3 font-semibold text-slate-900">Singapore</td>
+              <td class="px-4 py-3">Flexible, risk-based</td>
+              <td class="px-4 py-3">MAS</td>
+              <td class="px-4 py-3">Tech-neutral licensing tiers, sandbox</td>
+              <td class="px-4 py-3">High</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== KEY FINDINGS ===================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">Key Findings</h2>
+      <ol class="space-y-8">
+        <li class="reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-2">1 · There is no single "right" model</h3>
+          <p class="leading-relaxed">
+            Regulatory design follows each country's financial history, market structure and strategic ambitions.
+            The EU, UK, Singapore and Israel use <strong>directed regulation</strong> — actively engineering market
+            structure through mandated open banking — while the US relies on <strong>after-the-fact
+            enforcement</strong>, trading legal certainty for organic adaptability.
+          </p>
+        </li>
+        <li class="reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-2">2 · Fund segregation replaced deposit insurance</h3>
+          <p class="leading-relaxed">
+            Since PSP failures (e.g. Wirecard, 2020) are not covered by classic deposit insurance, leading regimes
+            require strict <strong>legal and physical segregation of client funds</strong>. Consumer protection is
+            also expanding into digital rights: algorithmic fairness, transparency of automated decisions, and
+            prevention of systemic bias in ML-based underwriting.
+          </p>
+        </li>
+        <li class="reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-2">3 · Regulation is a catalyst, not only a barrier</h3>
+          <p class="leading-relaxed">
+            Regulatory sandboxes (UK, Singapore) bridge the gap between fast innovation and slow legislation.
+            Open banking lowers entry barriers and fuels new services — while heavy compliance requirements
+            paradoxically strengthen large incumbents and create a whole new <strong>RegTech</strong> market for
+            automated KYC, fraud detection and transaction monitoring.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== CONCLUSION + CTA ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">Conclusion</h2>
+      <p class="text-lg leading-relaxed mb-10 reveal">
+        The central challenge facing regulators in the coming years is preserving the delicate balance between
+        protecting the stability of the financial system and not strangling technological innovation. As the
+        digital economy expands, international coordination, unified standards and flexible tools such as
+        regulatory sandboxes will be critical to the continued growth of payment providers — and to public trust
+        in modern financial systems.
+      </p>
+      <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 reveal">
+        <div>
+          <h3 class="font-bold text-slate-900 mb-1">Read the full review</h3>
+          <p class="text-sm text-slate-500">Practicum in Information Systems · Author: Ariel Matan · Advisor: Dr. Noam Koriat · Hebrew, 28 pages</p>
+        </div>
+        <a href="psp-regulation-paper.pdf" target="_blank" rel="noopener"
+           class="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-navy-accent font-semibold text-white hover:bg-blue-600 transition-colors">
+          Download PDF
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-navy text-slate-400">
+    <div class="max-w-6xl mx-auto px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p>© <span id="year"></span> Ariel Matan</p>
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 font-semibold text-slate-300 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to all projects
+      </a>
+    </div>
+  </footer>
+
+  <script src="project-page.js"></script>
+</body>
+</html>

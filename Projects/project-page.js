@@ -1,0 +1,19 @@
+// ============================================================
+// Shared enhancements for standalone project pages:
+// scroll reveal + footer year (no mobile menu on these pages).
+// ============================================================
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+document.getElementById('year').textContent = new Date().getFullYear();

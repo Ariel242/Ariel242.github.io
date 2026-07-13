@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithmic Fairness in Credit Scoring — Ariel Matan</title>
+  <meta name="description" content="Master's thesis research on the role of text features in fair credit scoring, using the LendingClub dataset.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#0f1e33',
+              light: '#16294a',
+              accent: '#2f6fed'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body class="bg-white text-slate-700 font-sans antialiased">
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-navy/95 backdrop-blur border-b border-white/10">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-5 h-16" aria-label="Main navigation">
+      <a href="../index.html" class="text-white font-bold tracking-tight text-lg">Ariel<span class="text-navy-accent">.</span>Matan</a>
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to all projects
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-navy text-white pt-32 pb-20 relative overflow-hidden">
+    <div class="hero-grid-bg absolute inset-0" aria-hidden="true"></div>
+    <div class="max-w-4xl mx-auto px-5 relative">
+      <p class="text-navy-accent font-semibold tracking-widest uppercase text-xs mb-4 reveal">Master's Thesis · Ongoing Research</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-5 leading-tight reveal">
+        Algorithmic Fairness in Credit Scoring
+      </h1>
+      <p class="max-w-2xl text-slate-400 text-lg leading-relaxed mb-8 reveal">
+        Do the words borrowers write matter — and do they make credit scoring fairer or more biased?
+        Research on the role of text features in fair credit scoring, using the LendingClub dataset.
+      </p>
+      <ul class="flex flex-wrap gap-2 reveal">
+        <li class="tech-tag !bg-white/10 !text-slate-200">Python</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">XGBoost</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">NLP</li>
+        <li class="tech-tag !bg-white/10 !text-slate-200">Fairness Metrics</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== OVERVIEW ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">The Research Question</h2>
+      <div class="space-y-5 text-lg leading-relaxed reveal">
+        <p>
+          Machine learning has transformed credit underwriting — but greater accuracy can come at the cost of
+          <strong class="text-slate-900">wider gaps between borrower groups</strong>. At the same time, research
+          has shown that the free text borrowers write in loan applications carries real predictive signal
+          for default.
+        </p>
+        <p>
+          This thesis sits at the intersection of the two: it examines whether adding
+          <strong class="text-slate-900">text-derived features</strong> to credit-scoring models improves
+          predictive performance, and how it affects <strong class="text-slate-900">fairness across borrower
+          groups</strong> — using loan-level data from LendingClub.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== METHOD ===================== -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="section-title reveal">Approach</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Data</h3>
+          <p class="text-sm leading-relaxed">
+            The LendingClub peer-to-peer lending dataset — structured borrower and loan attributes alongside
+            free-text loan descriptions, processed with NLP techniques into model features.
+          </p>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Models</h3>
+          <p class="text-sm leading-relaxed">
+            Three model families compared head-to-head: <strong>XGBoost</strong>, <strong>Random
+            Forest</strong> and <strong>Logistic Regression</strong> — trained with and without text
+            features to isolate their contribution.
+          </p>
+        </article>
+        <article class="project-card reveal">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Fairness Evaluation</h3>
+          <p class="text-sm leading-relaxed">
+            Performance is judged not only on accuracy, but under fairness metrics such as
+            <strong>Equalized Odds</strong> and the <strong>Brier Gap</strong>, quantifying how error rates
+            and calibration differ between borrower groups.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY IT MATTERS ===================== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="section-title reveal">Why It Matters</h2>
+      <p class="text-lg leading-relaxed mb-6 reveal">
+        Credit-scoring models decide who gets access to credit and at what price. Regulators worldwide — from
+        the EU AI Act to fair-lending supervision — increasingly demand that automated underwriting be not
+        only accurate but <strong class="text-slate-900">explainable and non-discriminatory</strong>. Understanding
+        whether alternative data such as text narrows or widens group disparities is a question with direct
+        policy and industry implications.
+      </p>
+      <p class="text-sm text-slate-500 reveal">
+        This research is ongoing as part of my Master's degree; results will be shared here when the work is complete.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-navy text-slate-400">
+    <div class="max-w-6xl mx-auto px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+      <p>© <span id="year"></span> Ariel Matan</p>
+      <a href="../index.html#projects" class="inline-flex items-center gap-2 font-semibold text-slate-300 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
+        </svg>
+        Back to all projects
+      </a>
+    </div>
+  </footer>
+
+  <script src="project-page.js"></script>
+</body>
+</html>

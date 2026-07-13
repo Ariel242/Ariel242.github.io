@@ -71,6 +71,15 @@
   height: 2.75rem;
   border-radius: 0.75rem;
 }
+.card-link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #2f6fed; /* navy accent */
+}
 .tech-tag {
   background: #f1f5f9; /* slate-100 */
   color: #334155;      /* slate-700 */
